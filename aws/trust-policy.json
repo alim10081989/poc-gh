@@ -12,7 +12,7 @@
           "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
         },
         "StringLike": {
-          "token.actions.githubusercontent.com:sub": "repo:alim10081989/poc-gh:ref:refs/heads/main"
+          "token.actions.githubusercontent.com:sub": "repo:alim10081989@5221989/poc-gh@1352471772:ref:refs/heads/main"
         }
       }
     }
