@@ -19,16 +19,7 @@
         "ecr:UploadLayerPart",
         "ecr:CompleteLayerUpload"
       ],
-      "Resource": [
-        "arn:aws:ecr:ap-south-1:123456789012:repository/myapp",
-        "arn:aws:ecr:ap-south-1:123456789012:repository/charts/myapp"
-      ]
-    },
-    {
-      "Sid": "ECRCreateChartRepoIfMissing",
-      "Effect": "Allow",
-      "Action": "ecr:CreateRepository",
-      "Resource": "arn:aws:ecr:ap-south-1:123456789012:repository/charts/myapp"
+      "Resource": "arn:aws:ecr:ap-south-1:231392323006:repository/myapp"
     }
   ]
 }
