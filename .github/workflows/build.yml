@@ -41,3 +41,26 @@ jobs:
       - name: Run unit tests
         working-directory: app
         run: pytest tests/ -v --cov=. --cov-report=term-missing
+
+  # ────────────────────────────────────────────────────────────
+  # JOB 2: Validates that the Docker image builds. Local to the
+  # runner only — no registry login, no push.
+  # ────────────────────────────────────────────────────────────
+  build-image:
+    name: Build Image
+    needs: build-test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build image
+        working-directory: app
+        run: |
+          docker build \
+            --build-arg APP_VERSION="${{ github.sha }}" \
+            -t myapp:${{ github.sha }} \
+            .
