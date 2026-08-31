@@ -1,0 +1,16 @@
+# Overrides for dev — merged on top of values.yaml
+replicaCount: 1
+
+image:
+  tag: "latest-dev"   # will be pin-bumped by CI to an immutable tag, e.g. 1.0.12-a1b2c3d
+
+resources:
+  requests:
+    cpu: 50m
+    memory: 64Mi
+  limits:
+    cpu: 150m
+    memory: 128Mi
+
+autoscaling:
+  enabled: false

@@ -1,0 +1,18 @@
+# Overrides for uat
+replicaCount: 2
+
+image:
+  tag: "REPLACE_ME"   # pinned by promotion PR, copied verbatim from qa's tested tag
+
+resources:
+  requests:
+    cpu: 150m
+    memory: 192Mi
+  limits:
+    cpu: 350m
+    memory: 384Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 4

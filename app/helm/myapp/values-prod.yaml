@@ -1,0 +1,19 @@
+# Overrides for prod
+replicaCount: 3
+
+image:
+  tag: "REPLACE_ME"   # pinned by prod promotion PR, requires CODEOWNERS approval
+
+resources:
+  requests:
+    cpu: 250m
+    memory: 256Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 60

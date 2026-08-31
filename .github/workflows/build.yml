@@ -1,0 +1,43 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'app/**'
+      - '.github/workflows/build.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/**'
+      - '.github/workflows/build.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  # ────────────────────────────────────────────────────────────
+  # JOB 1: Runs on every PR and every push to main.
+  # Gate — nothing downstream happens unless this passes.
+  # ────────────────────────────────────────────────────────────
+  build-test:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: app/requirements-dev.txt
+
+      - name: Install dependencies
+        working-directory: app
+        run: pip install -r requirements-dev.txt
+
+      - name: Run unit tests
+        working-directory: app
+        run: pytest tests/ -v --cov=. --cov-report=term-missing

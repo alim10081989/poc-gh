@@ -1,0 +1,13 @@
+apiVersion: v2
+name: myapp
+description: Sample Flask app — POC for image + Helm chart GitOps pipeline
+type: application
+
+# Chart version — bump this when chart TEMPLATES/structure change (new configmap,
+# resource limits, probe changes). Independent of the app release below.
+version: 0.1.0
+
+# appVersion — informational only, mirrors the image tag deployed.
+# The actual image tag used at deploy time comes from values.yaml (image.tag),
+# NOT from this field. This is just for `helm list` / `kubectl` visibility.
+appVersion: "1.0.0"

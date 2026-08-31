@@ -1,0 +1,16 @@
+# Overrides for qa
+replicaCount: 2
+
+image:
+  tag: "REPLACE_ME"   # pinned by promotion step, copied verbatim from dev's tested tag
+
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 250m
+    memory: 256Mi
+
+autoscaling:
+  enabled: false
